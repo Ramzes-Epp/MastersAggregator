@@ -1,0 +1,50 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="230"
+        x:Class="MasterAggregator.Desktop.Views.MasterEditorWindow"
+        Title="Редактировать" Width="450" Height="230">
+
+		<Grid Margin="15, 0, 15, 0">
+			<!--задаем колл строк в Grid-->
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/> 
+			</Grid.RowDefinitions>
+
+			<!--задаем колл колонок в Grid-->
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="80"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<TextBlock Grid.Row="0" Classes="Heading" Grid.ColumnSpan="2" Text="РЕДАКТИРОВАТЬ МАСТЕРА:" Margin="20"/>
+
+			<TextBlock Grid.Row="1" Classes="Heading" Grid.Column="0" Text="Имя:" Margin="15"/>
+			<TextBox  Grid.Row="1" Grid.Column="1" Text="{Binding MastersName}" Watermark="Введите имя мастера" Height="45"/>
+
+			<Grid Grid.Row="2" Grid.Column="1" ColumnDefinitions="*,*">
+				<RadioButton Grid.Column="0"
+							 Command="{Binding ChekBysyMasterCommandFalse}"
+							 IsChecked="true"
+							 GroupName="MasterGroup"
+							 Content="Мастер ЗАНЯТ"/>
+				<RadioButton  Grid.Column="1"
+							 Command="{Binding ChekBysyMasterCommandTrue}"
+							 IsChecked="{Binding IsActive}"
+							 GroupName="MasterGroup"
+							 Content="Мастер СВОБОДЕН"/>
+			</Grid>
+  
+			<StackPanel Grid.Row="3" Grid.ColumnSpan="2" Margin="0, 15, 0, 0">
+				<Grid ColumnDefinitions="*,*">
+					<Button Content="СОХРАНИТЬ" Command="{Binding CommitCommand}" Background="Gray" Margin="4" Grid.Row="0" Grid.Column="0"/>
+					<Button Content="ОТМЕНИТЬ" IsCancel="True" Command="{Binding CancelCommand}" Background="Gray" Margin="4" Grid.Row="0" Grid.Column="1"/>
+				</Grid>
+			</StackPanel>
+		</Grid>
+
+</Window>

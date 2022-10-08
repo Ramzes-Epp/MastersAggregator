@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="310"
+        x:Class="MasterAggregator.Desktop.Views.UserCreateWindow"
+        Title="Создать пользователя" Width="450" Height="310">
+
+	<Grid Margin="15, 0, 15, 0">
+		<!--задаем колл строк в Grid-->
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<!--задаем колл колонок в Grid-->
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="80"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+
+		<TextBlock Grid.Row="0" Classes="Heading" Grid.ColumnSpan="2" Text="ДОБАВИТЬ НОВОГО ПОЛЬЗОВАТЕЛЯ:" Margin="20"/>
+
+		<TextBlock Grid.Row="1" Classes="Heading" Grid.Column="0" Text="Имя:" Margin="15"/>
+		<TextBox  Grid.Row="1" Grid.Column="1" Text="{Binding Name}" Watermark="Введите имя" Height="45"/>
+
+		<TextBlock Grid.Row="2" Classes="Heading" Grid.Column="0" Text="Фамилия:" Margin="15"/>
+		<TextBox Grid.Row="2" Grid.Column="1" Text="{Binding FirstName}" Watermark="Введите фаимилию"  Height="45"/>
+
+		<TextBlock Grid.Row="3" Classes="Heading" Grid.Column="0" Text="Телефон:" Margin="15"/>
+		<MaskedTextBox Mask="(745)-000-0000" Grid.Row="3" Grid.Column="1" Text="{Binding Pfone}" Height="45"/>
+
+
+		<StackPanel Grid.Row="4" Grid.ColumnSpan="2" Margin="0, 15, 0, 0">
+			<Grid ColumnDefinitions="*,*">
+				<Button Content="ДОБАВИТЬ" Command="{Binding CommitCommand}" Background="Gray" Margin="4" Grid.Row="0" Grid.Column="0"/>
+				<Button Content="ОТМЕНИТЬ" IsCancel="True" Command="{Binding CancelCommand}" Background="Gray" Margin="4" Grid.Row="0" Grid.Column="1"/>
+			</Grid>
+		</StackPanel>
+	</Grid>
+</Window>

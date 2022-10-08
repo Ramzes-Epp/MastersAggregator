@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MastersAggregatorService", "MastersAggregatorService\MastersAggregatorService.csproj", "{0A0E01EE-9118-4D24-B6CF-77F3654E325C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MastersAggregator.Test", "MastersAggregator.Test\MastersAggregator.Test.csproj", "{6329FF04-A246-4B7B-A366-9377B360826F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterAggregator.Desktop", "MasterAggregator.Desktop\MasterAggregator.Desktop.csproj", "{60066081-1544-486B-9DE0-495D2004032C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A0E01EE-9118-4D24-B6CF-77F3654E325C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A0E01EE-9118-4D24-B6CF-77F3654E325C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A0E01EE-9118-4D24-B6CF-77F3654E325C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A0E01EE-9118-4D24-B6CF-77F3654E325C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6329FF04-A246-4B7B-A366-9377B360826F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6329FF04-A246-4B7B-A366-9377B360826F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6329FF04-A246-4B7B-A366-9377B360826F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6329FF04-A246-4B7B-A366-9377B360826F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60066081-1544-486B-9DE0-495D2004032C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60066081-1544-486B-9DE0-495D2004032C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60066081-1544-486B-9DE0-495D2004032C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60066081-1544-486B-9DE0-495D2004032C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,198 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MasterAggregator.Desktop.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="550"
+        x:Class="MasterAggregator.Desktop.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="MasterAgregator" Width="800" Height="550" Name="MyTitlePanel">
+	<!--добавил тему стилей Material.Avalonia 2.5.1 полное описание и настройки в App.axaml -->
+
+
+	<Grid >
+		<!--задаем колл строк в Grid-->
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<!--задаем колл колонок в Grid-->
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="250"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+
+		<!--Меню-->
+		<Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+			<MenuItem Header="Авторизация"> 
+				<MenuItem Header="выход" Command="{Binding ExitFromTheService}" />
+			</MenuItem>
+		</Menu>
+
+		<!--Боковая колонка-->
+		<Border Classes="Card"
+				Grid.Column="0"
+				Grid.Row="1"
+				CornerRadius="2"
+				Padding="4">
+			<StackPanel>
+				<Button Classes="myClassBtn"
+						Content="ЗАКАЗЧИКИ"
+						Command="{Binding GetAllUser}"/>
+				<Button Classes="myClassBtn"
+						Content="ЗАКАЗЫ"
+						Command="{Binding GetAllUser}"/>
+				<Button Classes="myClassBtn"
+						Content="МАСТЕРА"
+						Command="{Binding GetAllMaster}"/>
+			</StackPanel>
+		</Border>
+
+		<!--Выводим если пользователь не авторизован-->
+		<StackPanel Grid.Row="1" Grid.Column="1" IsVisible="{Binding !IsAuthorization}">
+			<StackPanel Classes="Card" Grid.Row="0">
+				<TextBlock Text="{Binding TitleList}" Margin="5,5,0,0" FontSize="22" HorizontalAlignment="Center"/>
+			</StackPanel>
+			<StackPanel Grid.Row="1" Grid.Column="1" IsVisible="{Binding !IsAuthorization}">
+				<Grid Grid.RowDefinitions="*,*">
+					<TextBox Text="{Binding AuthorizationKey}" Watermark="Введите API ключ" Grid.Row="0" Height="45"/>
+					<Button Content="ВОЙТИ" Command="{Binding ChekAuthorization}" Background="Gray" Margin="4" Grid.Row="1" />
+				</Grid>
+			</StackPanel>	 
+		</StackPanel>
+		
+		<!--Вывод таблицы заказчиков (User) и кнопок редактирования-->
+		<StackPanel Grid.Row="1" Grid.Column="1" IsVisible="{Binding IsVisibleUserItemsbool}">
+			<Border Classes="Primary"
+			CornerRadius="2"
+			Padding="3">
+				<Grid RowDefinitions="70,*"  Margin="4">
+					<!--Основное текстовое поле МЕНЮ-->
+					<StackPanel Grid.Row="0">
+						<Grid ColumnDefinitions="*,*,*">
+							<Button Content="ДОБАВИТЬ"
+									Background="Gray"
+									Margin="4" Grid.Row="0"
+									Grid.Column="0"
+									Command="{Binding CreateUser}"
+									CommandParameter="{Binding NewUser}"/>
+							<Button Content="РЕДАКТИРОВАТЬ"
+									Background="Gray"
+									Margin="4"
+									Grid.Row="0" Grid.Column="1"
+									Command="{Binding EditUser}"
+									CommandParameter="{Binding SelectedUser}"/>
+							<Button Content="УДАЛИТЬ"
+									Background="Gray"
+									Margin="4"
+									Grid.Row="0" Grid.Column="2"
+									Command="{Binding RemoveUser}"
+									CommandParameter="{Binding SelectedUser}"/>
+						</Grid>
+					</StackPanel>
+					<StackPanel Grid.Row="1">
+						<Grid>
+							<Grid RowDefinitions="40,*">
+								<StackPanel Classes="Card" Grid.Row="0">
+									<TextBlock Text="{Binding TitleList}" Margin="5,5,0,0" FontSize="22" HorizontalAlignment="Center"/>
+								</StackPanel>
+								<!-- выводим список User и устанавливаем Height что бы скролл в ListBox работал при изменение окна  Height="{Binding Path=Height,ElementName=MyTitlePanel}" -->
+								<StackPanel Grid.Row="1">
+									<ListBox Items="{Binding UserItems }"
+										SelectionMode="Single"
+										SelectedItem="{Binding SelectedUser}"
+										Height="400"
+										ScrollViewer.VerticalScrollBarVisibility="Auto">
+										<ListBox.ItemTemplate>
+											<DataTemplate>
+												<Grid>
+													<Border Background="LightGray" Padding="5" CornerRadius="5">
+														<Grid ColumnDefinitions="*,*,*,*">
+															<TextBlock Text="{Binding Id}" Grid.Column="0"/>
+															<TextBlock Text="{Binding Name}" Grid.Column="1"/>
+															<TextBlock Text="{Binding FirstName}" Grid.Column="2"/>
+															<TextBlock Text="{Binding Pfone}" Grid.Column="3"/>
+														</Grid>
+													</Border>
+												</Grid>
+											</DataTemplate>
+										</ListBox.ItemTemplate>
+									</ListBox>
+								</StackPanel>
+							</Grid>
+						</Grid>
+					</StackPanel>
+				</Grid>
+			</Border>
+		</StackPanel>
+
+		<!--Вывод таблицы Мастеров и кнопок редактирования -->
+		<StackPanel Grid.Row="1" Grid.Column="1" IsVisible="{Binding IsVisibleMasterItemsbool}">
+			<Border Classes="Primary"
+			CornerRadius="2"
+			Padding="3">
+				<Grid RowDefinitions="70,*"  Margin="4">
+					<!--Основное текстовое поле МЕНЮ-->
+					<StackPanel Grid.Row="0">
+						<Grid ColumnDefinitions="*,*,*">
+							<Button Content="ДОБАВИТЬ"
+									Background="Gray"
+									Margin="4" Grid.Row="0"
+									Grid.Column="0"
+									Command="{Binding CreateMaster}"
+									CommandParameter="{Binding NewMaster}"/>
+							<Button Content="РЕДАКТИРОВАТЬ"
+									Background="Gray"
+									Margin="4"
+									Grid.Row="0" Grid.Column="1"
+									Command="{Binding EditMaster}"
+									CommandParameter="{Binding SelectedMaster}"/>
+							<Button Content="УДАЛИТЬ"
+									Background="Gray"
+									Margin="4"
+									Grid.Row="0" Grid.Column="2"
+									Command="{Binding RemoveMaster}"
+									CommandParameter="{Binding SelectedMaster}"/>
+						</Grid>
+					</StackPanel>
+
+					<StackPanel Grid.Row="1">
+						<Grid>
+							<Grid RowDefinitions="40,*">
+								<StackPanel Classes="Card" Grid.Row="0">
+									<TextBlock Text="{Binding TitleList}" Margin="5,5,0,0" FontSize="22" HorizontalAlignment="Center"/>
+								</StackPanel>
+								<!-- выводим список User и устанавливаем Height что бы скролл в ListBox работал при изменение окна  Height="{Binding Path=Height,ElementName=MyTitlePanel}" -->
+								<StackPanel Grid.Row="1">
+									<ListBox Items="{Binding MasterItems }"
+										SelectionMode="Single"
+										SelectedItem="{Binding SelectedMaster}"
+										Height="400"
+										ScrollViewer.VerticalScrollBarVisibility="Auto">
+										<ListBox.ItemTemplate>
+											<DataTemplate>
+												<Grid>
+													<Border Background="LightGray" Padding="5" CornerRadius="5">
+														<Grid ColumnDefinitions="*,*,*">
+															<TextBlock Text="{Binding Id}" Grid.Column="0"/>
+															<TextBlock Text="{Binding MastersName}" Grid.Column="1"/>
+															<!--<TextBlock Text="{Binding IsActive}" Grid.Column="2"/>-->
+															<TextBlock Text="СВОБОДЕН" IsVisible="{Binding IsActive}" Grid.Column="2"/>
+															<TextBlock Text="ЗАНЯТ" IsVisible="{Binding !IsActive}" Grid.Column="2"/>
+														</Grid>
+													</Border>
+												</Grid>
+											</DataTemplate>
+										</ListBox.ItemTemplate>
+									</ListBox>
+								</StackPanel>
+							</Grid>
+						</Grid>
+					</StackPanel>
+				</Grid>
+			</Border>
+		</StackPanel>
+
+	</Grid>
+</Window>
