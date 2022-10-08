@@ -28,4 +28,7 @@
         <PackageReference Include="Material.Avalonia" Version="2.5.1" />
         <PackageReference Include="XamlNameReferenceGenerator" Version="1.3.4" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Assets\Foto frontend\" />
+    </ItemGroup>
 </Project>
