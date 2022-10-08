@@ -1,4 +1,4 @@
-﻿using MasterAggregator.Desktop.Models;
+using MasterAggregator.Desktop.Models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;

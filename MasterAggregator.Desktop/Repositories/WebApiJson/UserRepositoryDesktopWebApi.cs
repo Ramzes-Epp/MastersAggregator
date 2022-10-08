@@ -13,7 +13,7 @@ namespace MasterAggregator.Desktop.Repositories.WebApiJson
         static ObservableCollection<User>? Users { get; set; }
 
         /// <summary>
-        /// урл сервера к которому обращаемся
+        /// СѓСЂР» СЃРµСЂРІРµСЂР° Рє РєРѕС‚РѕСЂРѕРјСѓ РѕР±СЂР°С‰Р°РµРјСЃВ¤
         /// </summary>
         public static readonly string BaseUri = "https://localhost:7004";
          
@@ -21,10 +21,10 @@ namespace MasterAggregator.Desktop.Repositories.WebApiJson
         {
             HttpClient client = new HttpClient();
 
-            client.BaseAddress = new Uri(System.Uri.UnescapeDataString(BaseUri));// базовый адрес / доменное имя
+            client.BaseAddress = new Uri(System.Uri.UnescapeDataString(BaseUri));// Р±Р°Р·РѕРІС‹Р№ Р°РґСЂРµСЃ / РґРѕРјРµРЅРЅРѕРµ РёРјВ¤
             client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));// Установлеваем формат передачи в json 
-            client.DefaultRequestHeaders.TryAddWithoutValidation("ApiKey", Authorization);// Установлеваем apikey 
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));// вЂќСЃС‚Р°РЅРѕРІР»РµРІР°РµРј С„РѕСЂРјР°С‚ РїРµСЂРµРґР°С‡Рё РІ json 
+            client.DefaultRequestHeaders.TryAddWithoutValidation("ApiKey", Authorization);// вЂќСЃС‚Р°РЅРѕРІР»РµРІР°РµРј apikey 
 
             return client;
         }
@@ -37,7 +37,7 @@ namespace MasterAggregator.Desktop.Repositories.WebApiJson
             try
             {
                 HttpResponseMessage response = await client.DeleteAsync(@"/api/User/DeleteUser?id=" + user.Id);
-                //если ответ 200 
+                //РµСЃР»Рё РѕС‚РІРµС‚ 200 
                 if (response.IsSuccessStatusCode)
                 {
                     Users = await GetAllAsync(AuthorizationPassword);
@@ -59,7 +59,7 @@ namespace MasterAggregator.Desktop.Repositories.WebApiJson
             try
             {
                 HttpResponseMessage response = await client.PutAsJsonAsync(@"/api/User/UpdateUser", user);
-                //если ответ 200 
+                //РµСЃР»Рё РѕС‚РІРµС‚ 200 
                 if (response.IsSuccessStatusCode)
                 {
                     Users = await GetAllAsync(AuthorizationPassword);
@@ -81,7 +81,7 @@ namespace MasterAggregator.Desktop.Repositories.WebApiJson
             try
             {
                 HttpResponseMessage response = await client.GetAsync(@"/api/User/GetAllUsers");
-                //если ответ 200 
+                //РµСЃР»Рё РѕС‚РІРµС‚ 200 
                 if (response.IsSuccessStatusCode)
                 {
                     Users = await response.Content.ReadFromJsonAsync<ObservableCollection<User>>();
@@ -103,7 +103,7 @@ namespace MasterAggregator.Desktop.Repositories.WebApiJson
             try
             {
                 HttpResponseMessage response = await client.PostAsJsonAsync(@"/api/User/CreateUser", user);
-                //если ответ 200 
+                //РµСЃР»Рё РѕС‚РІРµС‚ 200 
                 if (response.IsSuccessStatusCode)
                 {
                     Users = await GetAllAsync(AuthorizationPassword);

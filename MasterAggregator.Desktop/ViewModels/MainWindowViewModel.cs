@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls;
+using Avalonia.Controls;
 using MasterAggregator.Desktop.Models;
 using MasterAggregator.Desktop.Repositories;
 using MasterAggregator.Desktop.Repositories.WebApiJson;

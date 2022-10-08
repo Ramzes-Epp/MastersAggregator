@@ -81,7 +81,7 @@ public class MasterController : BaseController<Master>
     [HttpPost] 
     public async Task<IActionResult> CreateMaster([FromBody] Master master)
     {
-        //ïåðåîïðåäåëåí ìåòîä Equals() è ñðàâíèâàåì ïîêà ïî id è èìåíè (MastersName) åñòü ëè òàêîé Master â ÁÄ òî return BadRequest()
+        //Ð¿ÐµÑ€ÐµÐ¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½ Ð¼ÐµÑ‚Ð¾Ð´ Equals() Ð¸ ÑÑ€Ð°Ð²Ð½Ð¸Ð²Ð°ÐµÐ¼ Ð¿Ð¾ÐºÐ° Ð¿Ð¾ id Ð¸ Ð¸Ð¼ÐµÐ½Ð¸ (MastersName) ÐµÑÑ‚ÑŒ Ð»Ð¸ Ñ‚Ð°ÐºÐ¾Ð¹ Master Ð² Ð‘Ð” Ñ‚Ð¾ return BadRequest()
         var masters = await _repository.GetAllAsync();
 
         if (masters.Any(u => u.MastersName.Equals(master.MastersName) == true))

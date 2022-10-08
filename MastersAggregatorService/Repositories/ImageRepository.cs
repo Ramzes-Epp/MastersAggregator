@@ -10,7 +10,7 @@ public class ImageRepository : BaseRepository<Image>, IImageRepository
     {
     }
     /// <summary>
-    /// Вернуть список Image (Async)
+    /// Р’РµСЂРЅСѓС‚СЊ СЃРїРёСЃРѕРє Image (Async)
     /// </summary>
     public async Task<IEnumerable<Image>> GetAllAsync()
     {
@@ -29,7 +29,7 @@ public class ImageRepository : BaseRepository<Image>, IImageRepository
 
 
     /// <summary>
-    /// Вернуть Image по id (Async)
+    /// Р’РµСЂРЅСѓС‚СЊ Image РїРѕ id (Async)
     /// </summary> 
     public async Task<Image> GetByIdAsync(int imageId)
     {
@@ -48,7 +48,7 @@ public class ImageRepository : BaseRepository<Image>, IImageRepository
 
 
     /// <summary>
-    /// Вернуть список Image (async method)
+    /// Р’РµСЂРЅСѓС‚СЊ СЃРїРёСЃРѕРє Image (async method)
     /// </summary>  
     public async Task<Image> SaveAsync(Image model)
     {
@@ -68,7 +68,7 @@ public class ImageRepository : BaseRepository<Image>, IImageRepository
 
 
     /// <summary>
-    /// Удалить Image из БД (async)
+    /// РЈРґР°Р»РёС‚СЊ Image РёР· Р‘Р” (async)
     /// </summary>
     public async Task DeleteAsync(Image model)
     {
@@ -86,7 +86,7 @@ public class ImageRepository : BaseRepository<Image>, IImageRepository
 
 
     /// <summary>
-    /// Изменить в БД Image (async)
+    /// РР·РјРµРЅРёС‚СЊ РІ Р‘Р” Image (async)
     /// </summary>
     public async Task UpdateAsync(Image model)
     {

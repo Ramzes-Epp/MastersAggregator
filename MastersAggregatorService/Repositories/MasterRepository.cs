@@ -12,7 +12,7 @@ public class MasterRepository : BaseRepository<Master>, IMasterRepository
     }
 
     /// <summary>
-    /// Вернуть список Master (Async)
+    /// Р’РµСЂРЅСѓС‚СЊ СЃРїРёСЃРѕРє Master (Async)
     /// </summary>
     /// <returns></returns>
     public async Task<IEnumerable<Master>> GetAllAsync()
@@ -33,7 +33,7 @@ public class MasterRepository : BaseRepository<Master>, IMasterRepository
 
 
     /// <summary>
-    /// Вернуть Master по id (Async)
+    /// Р’РµСЂРЅСѓС‚СЊ Master РїРѕ id (Async)
     /// </summary> 
     public async Task<Master> GetByIdAsync(int idMaster)
     {
@@ -53,7 +53,7 @@ public class MasterRepository : BaseRepository<Master>, IMasterRepository
 
 
     /// <summary>
-    /// Вернуть список Master в зависимости от занятости (async method)
+    /// Р’РµСЂРЅСѓС‚СЊ СЃРїРёСЃРѕРє Master РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ Р·Р°РЅСЏС‚РѕСЃС‚Рё (async method)
     /// </summary>  
     public async Task<IEnumerable<Master>> GetByConditionAsync(bool condition) 
     {
@@ -73,7 +73,7 @@ public class MasterRepository : BaseRepository<Master>, IMasterRepository
 
 
     /// <summary>
-    /// Изменить в БД Master (async)
+    /// РР·РјРµРЅРёС‚СЊ РІ Р‘Р” Master (async)
     /// </summary>
     public async Task<Master> UpdateAsync(Master model)
     { 
@@ -92,7 +92,7 @@ public class MasterRepository : BaseRepository<Master>, IMasterRepository
 
 
     /// <summary>
-    /// добавить в БД Master (async)
+    /// РґРѕР±Р°РІРёС‚СЊ РІ Р‘Р” Master (async)
     /// </summary>
     public async Task<Master> SaveAsync(Master model)
     {
@@ -112,7 +112,7 @@ public class MasterRepository : BaseRepository<Master>, IMasterRepository
 
 
     /// <summary>
-    /// Удалить Master из БД (async)
+    /// РЈРґР°Р»РёС‚СЊ Master РёР· Р‘Р” (async)
     /// </summary>
     public async Task DeleteAsync(Master model)
     {

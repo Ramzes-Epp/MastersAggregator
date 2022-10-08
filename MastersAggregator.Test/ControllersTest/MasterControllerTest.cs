@@ -1,4 +1,4 @@
-﻿using MastersAggregatorService.Controllers;
+using MastersAggregatorService.Controllers;
 using MastersAggregatorService.Interfaces;
 using MastersAggregatorService.Models;
 using Microsoft.AspNetCore.Mvc;

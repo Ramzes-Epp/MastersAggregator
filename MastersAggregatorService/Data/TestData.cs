@@ -1,4 +1,4 @@
-﻿using MastersAggregatorService.Models;
+using MastersAggregatorService.Models;
  
 namespace MastersAggregatorService.Data;
 

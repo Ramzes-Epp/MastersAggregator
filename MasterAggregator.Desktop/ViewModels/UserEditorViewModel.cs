@@ -1,4 +1,4 @@
-﻿using MasterAggregator.Desktop.Commands;
+using MasterAggregator.Desktop.Commands;
 using MasterAggregator.Desktop.Models;
 using System;
 using System.Collections.Generic;

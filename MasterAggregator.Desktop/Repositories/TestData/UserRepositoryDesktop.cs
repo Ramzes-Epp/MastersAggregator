@@ -1,4 +1,4 @@
-﻿using MasterAggregator.Desktop.Models;
+using MasterAggregator.Desktop.Models;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
